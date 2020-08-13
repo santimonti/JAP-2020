@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
+    <meta name="google-signin-client_id" content="460997719823-lndtgqjq07fptr7nslnj5n15gh2dtac2.apps.googleusercontent.com" />
+
     <title>eMercado - Todo lo que busques está aquí</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/" />
@@ -34,34 +36,37 @@
         padding: 15px;
         margin: auto;
       }
+      .g-signin2 {
+        margin-top: 10px;
+        margin-left: 50px;
+      }
     </style>
   </head>
 
   <body class="text-center">
     <div class="container p-5">
-      <form class="signin" action="index.html">
+      <div class="signin">
         <img src="img/login.png" alt="Imagen jap" class="img-thumbnail mb-4" />
         <h1 class="h3 mb-3 font-weight-normal">Inicia sesion</h1>
         <div class="form-group">
           <label for="inputemail" class="sr-only">Email</label>
-          <input type="email" id="inputemail" placeholder="Correo Electronico" class="form-control" required autofocus />
+          <input type="email" id="inputemail" placeholder="Correo Electronico" class="validations form-control" />
         </div>
 
-        <div class="form-group">
+        <div>
           <label for="inputpassword" class="sr-only">Contraseña</label>
 
-          <input type="password" id="inputpassword" size="20" placeholder="Contraseña" class="form-control" required />
+          <input type="password" id="inputpassword" size="20" placeholder="Contraseña" class="validations form-control" />
         </div>
-        <div class="form-group">
+        <div>
           <label
             ><input type="checkbox" value="recordar" class="checkbox mb-3" />
             Recordar
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-bloc">
-          Iniciar sesion
-        </button>
-      </form>
+        <button id="botonis" class="btn btn-lg btn-primary btn-bloc">Iniciar Sesion</button>
+      </div>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
       <p class="mt-5 mb-3 text-muted">
         &copy; 2020-2020
@@ -70,5 +75,6 @@
 
     <script src="js/init.js"></script>
     <script src="js/login.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </body>
 </html>
