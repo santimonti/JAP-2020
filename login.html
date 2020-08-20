@@ -31,7 +31,9 @@
         padding-bottom: 40px;
         background-color: #f5f5f5;
       }
-
+      .botonGoogle{
+        justify-items: end;
+      }
       .signin {
         width: 100%;
         max-width: 330px;
@@ -60,14 +62,14 @@
           <input type="password" id="inputpassword" size="20" placeholder="Contraseña" class="validations form-control" />
         </div>
         <div>
-          <label
-            ><input type="checkbox" value="recordar" class="checkbox mb-3" />
+          <label></label>
+            <input type="checkbox" value="recordar" class="checkbox mb-3" />
             Recordar
           </label>
         </div>
         <button id="botonis" class="btn btn-lg btn-primary btn-bloc">Iniciar Sesion</button>
       </div>
-      <div class="g-signin2" data-width="200" data-height="30" data-longtitle="true" data-onsuccess="onSignIn"></div>
+      <div id="botonGoogle" class="g-signin2" data-width="200" data-height="30" data-longtitle="true" data-onsuccess="onSignIn"></div>
       <p class="mt-5 mb-3 text-muted">
         &copy; 2020-2020
       </p>

@@ -1,6 +1,7 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+var usuario = "";
 document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("botonis").addEventListener("click", boton);
   var contra = document.getElementById("inputpassword");
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   function boton() {
     if (email.value.length > 0 && contra.value.length > 0) {
       location.href = "../index.html";
+      usuario = localStorage.setItem("user", email.value);
     } else {
       if (email.value.length < 1 && contra.value.length < 1) {
         document.getElementById("inputemail").style.border = "thin solid red";
@@ -33,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
   }
 });
+
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
