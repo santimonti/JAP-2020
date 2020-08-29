@@ -52,7 +52,7 @@ document.getElementById("userEmail").addEventListener("click", usuario);
 email.value = localStorage.getItem("user");
 
 if (email.value == undefined) {
-  location.href = "../login.html";
+  location.href = "login.html";
   console.log("nope");
 }
 if (email.value) {
@@ -71,7 +71,7 @@ if (email.value) {
 }
 function usuario() {
   if (email.innerHTML == "Iniciar sesion") {
-    document.getElementById("userEmail").href = "../login.html";
+    document.getElementById("userEmail").href = "login.html";
   }
 }
 document.getElementById("logout").addEventListener("click", logout);

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   function boton() {
     if (email.value.length > 0 && contra.value.length > 0) {
-      location.href = "../index.html";
+      location.href = "index.html";
       localStorage.setItem("user", email.value);
     } else {
       if (email.value.length < 1 && contra.value.length < 1) {
@@ -45,5 +45,5 @@ function onSignIn(googleUser) {
   console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
   localStorage.setItem("user", profile.getEmail());
   localStorage.setItem("photo", profile.getImageUrl());
-  location.href = "../index.html";
+  location.href = "index.html";
 }
