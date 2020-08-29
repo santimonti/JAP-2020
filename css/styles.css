@@ -58,7 +58,7 @@ footer p {
 }
 
 .site-header a,
-.site-header #userEmail {
+.site-header {
   color: white;
   transition: ease-in-out color 0.15s;
 }
@@ -135,8 +135,7 @@ footer p {
 }
 
 a.custom-card,
-a.custom-card:hover,
-#userEmail {
+a.custom-card:hover {
   color: inherit;
   text-decoration: inherit;
 }

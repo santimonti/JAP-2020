@@ -7,6 +7,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/pro
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 var email;
+var foto;
 var showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 };
@@ -45,6 +46,40 @@ var getJSONData = function (url) {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {});
 email = document.getElementById("userEmail");
-if (email.innerHTML == "Usuario") {
-  email.innerHTML = localStorage.getItem("user");
+
+document.getElementById("userEmail").addEventListener("click", usuario);
+
+email.value = localStorage.getItem("user");
+
+if (email.value == undefined) {
+  location.href = "../login.html";
+  console.log("nope");
+}
+if (email.value) {
+  console.log(email.innerHTML);
+  console.log(email.value);
+  email.innerHTML = email.value;
+
+  email.innerHTML = email.innerHTML.slice(0, email.innerHTML.indexOf("@"));
+  email.classList.remove("btn-dark");
+
+  document.getElementById("btnlogout").innerHTML += `
+   <button type="button" class="btn btn-dark btn-sm " id="logout">
+  <span class="glyphicon glyphicon-log-out"></span>
+  Log out
+</button>`;
+} else {
+  email.innerhtml = "Iniciar sesion";
+}
+function usuario() {
+  if (email.innerHTML == "Iniciar sesion") {
+    document.getElementById("userEmail").href = "../login.html";
+  }
+}
+document.getElementById("logout").addEventListener("click", logout);
+
+function logout() {
+  localStorage.removeItem("user");
+  localStorage.removeItem("photo");
+  location.reload();
 }

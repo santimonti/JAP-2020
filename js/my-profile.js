@@ -3,7 +3,3 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {});
 document.addEventListener("DOMContentLoaded", function (e) {});
-email = document.getElementById("userEmail");
-if (email.innerHTML == "Usuario") {
-  email.innerHTML = localStorage.getItem("user");
-}

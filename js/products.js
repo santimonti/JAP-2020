@@ -31,14 +31,18 @@ function sortProducts(criteria, array) {
 
   return result;
 }
+var value = document.getElementById("tableSearch").addEventListener("keyup", showProductList);
 
 function showProductList() {
   let htmlContentToAppend = "";
   for (let i = 0; i < category_prod.length; i++) {
     let prod = category_prod[i];
+    value = document.getElementById("tableSearch").value.toLowerCase();
+    let n = prod.name.toLowerCase().indexOf(value);
     if (
       (minPrice == undefined || (minPrice != undefined && parseInt(prod.cost) >= minPrice)) &&
-      (maxPrice == undefined || (maxPrice != undefined && parseInt(prod.cost) <= maxPrice))
+      (maxPrice == undefined || (maxPrice != undefined && parseInt(prod.cost) <= maxPrice && e)) &&
+      (value == undefined || n > -1)
     ) {
       htmlContentToAppend +=
         `
@@ -149,8 +153,3 @@ document.addEventListener("DOMContentLoaded", function (e) {
     showProductList();
   });
 });
-document.addEventListener("DOMContentLoaded", function (e) {});
-email = document.getElementById("userEmail");
-if (email.innerHTML == "Usuario") {
-  email.innerHTML = localStorage.getItem("user");
-}

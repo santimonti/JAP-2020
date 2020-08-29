@@ -2,6 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 var usuario = "";
+
 document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("botonis").addEventListener("click", boton);
   var contra = document.getElementById("inputpassword");
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   function boton() {
     if (email.value.length > 0 && contra.value.length > 0) {
       location.href = "../index.html";
-      usuario = localStorage.setItem("user", email.value);
+      localStorage.setItem("user", email.value);
     } else {
       if (email.value.length < 1 && contra.value.length < 1) {
         document.getElementById("inputemail").style.border = "thin solid red";
@@ -42,5 +43,7 @@ function onSignIn(googleUser) {
   console.log("Name: " + profile.getName());
   console.log("Image URL: " + profile.getImageUrl());
   console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
-  document.location.href = "../index.html";
+  localStorage.setItem("user", profile.getEmail());
+  localStorage.setItem("photo", profile.getImageUrl());
+  location.href = "../index.html";
 }
