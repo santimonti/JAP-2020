@@ -41,7 +41,7 @@ function showProductList() {
     let n = prod.name.toLowerCase().indexOf(value);
     if (
       (minPrice == undefined || (minPrice != undefined && parseInt(prod.cost) >= minPrice)) &&
-      (maxPrice == undefined || (maxPrice != undefined && parseInt(prod.cost) <= maxPrice && e)) &&
+      (maxPrice == undefined || (maxPrice != undefined && parseInt(prod.cost) <= maxPrice)) &&
       (value == undefined || n > -1)
     ) {
       htmlContentToAppend +=
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     //de productos por categoría.
     minPrice = document.getElementById("rangeFilterPriceMin").value;
     maxPrice = document.getElementById("rangeFilterPriceMax").value;
-
+    console.log(minPrice);
     if (minPrice != undefined && minPrice != "" && parseInt(minPrice) >= 0) {
       minPrice = parseInt(minPrice);
     } else {

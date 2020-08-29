@@ -56,8 +56,6 @@ if (email.value == undefined) {
   console.log("nope");
 }
 if (email.value) {
-  console.log(email.innerHTML);
-  console.log(email.value);
   email.innerHTML = email.value;
 
   email.innerHTML = email.innerHTML.slice(0, email.innerHTML.indexOf("@"));
