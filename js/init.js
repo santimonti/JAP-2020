@@ -53,7 +53,6 @@ email.value = localStorage.getItem("user");
 
 if (email.value == undefined) {
   location.href = "login.html";
-  console.log("nope");
 }
 if (email.value) {
   email.innerHTML = email.value;

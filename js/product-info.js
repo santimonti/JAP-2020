@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
       productComment = resultObj.data;
-
+      if (sessionStorage.getItem("comentario")) {
+        productComment.push(JSON.parse(sessionStorage.getItem("comentario")));
+      }
       showProductComment();
     }
   });
@@ -122,32 +124,33 @@ function showProductInfo() {
 }
 function showRelated() {
   let relatedInfo = "";
-  for (let i = 0; i < relatedProduct.length; i++) {
-    let related = relatedProduct[i];
-    if (i == productInfo.relatedProducts[0] || i == productInfo.relatedProducts[1]) {
-      relatedInfo +=
-        `
+  for (let i = 0; i < productInfo.relatedProducts.length; i++) {
+    let pos = productInfo.relatedProducts[i];
+    let related = relatedProduct[pos];
+
+    relatedInfo +=
+      `
   <div class=" col-sm-4 ">
       <div class="card rounded">
           <div class="card-image">
           <span class="card-notify-badge "><h6>` +
-        related.name +
-        `</h6></span>
+      related.name +
+      `</h6></span>
               
               <img class="img-fluid" src="` +
-        relatedProduct[i].imgSrc +
-        `" alt=" ` +
-        relatedProduct[i].name +
-        `" />
+      relatedProduct[i].imgSrc +
+      `" alt=" ` +
+      relatedProduct[i].name +
+      `" />
           </div>
           <div class="card-image-overlay m-auto">
               
               <span class="card-detail-badge">US$ ` +
-        relatedProduct[i].cost +
-        `</span>
+      relatedProduct[i].cost +
+      `</span>
               <span class="card-detail-badge">` +
-        relatedProduct[i].soldCount +
-        ` vendidos</span>
+      relatedProduct[i].soldCount +
+      ` vendidos</span>
           </div>
           <div class="card-body text-center">
               <div class="ad-title m-auto">
@@ -161,7 +164,6 @@ function showRelated() {
 
   
 `;
-    }
   }
   document.getElementById("ads").innerHTML = relatedInfo;
 }
@@ -200,7 +202,8 @@ function showProductComment() {
     </div>
   </li><br>`; // and concatenate the cool movie name
   });
-  document.getElementById("prodComment").innerHTML = comments; // Finally insert
+  document.getElementById("prodComment").innerHTML = comments;
+  // Finally insert
 }
 
 var count;
@@ -216,4 +219,16 @@ function starmark(item) {
       document.getElementById(i + 1 + subid).style.color = "black";
     }
   }
+}
+function result() {
+  let commen = {
+    score: sessionStorage.starRating,
+    description: document.getElementById("comment").value,
+    user: localStorage.getItem("user"),
+    dateTime: Date(),
+  };
+  sessionStorage.setItem("comentario", JSON.stringify(commen));
+
+  showProductComment();
+  location.reload();
 }
