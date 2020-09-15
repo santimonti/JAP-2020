@@ -124,6 +124,7 @@ function showProductInfo() {
 }
 function showRelated() {
   let relatedInfo = "";
+
   for (let i = 0; i < productInfo.relatedProducts.length; i++) {
     let pos = productInfo.relatedProducts[i];
     let related = relatedProduct[pos];
