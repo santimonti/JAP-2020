@@ -3,6 +3,7 @@
 //elementos HTML presentes.
 var relatedProduct;
 var productInfo;
+//Obtiene el json del link
 document.addEventListener("DOMContentLoaded", function (t) {
   getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
@@ -12,17 +13,21 @@ document.addEventListener("DOMContentLoaded", function (t) {
     }
   });
 });
+//Obtiene el json del link
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
       productComment = resultObj.data;
+      //Si es diferente a undefined entra al if y muestra el comentario guardado en el seassion storage
       if (sessionStorage.getItem("comentario")) {
+        //Agrega a la varuable productComment el objeto guardado en seasion storage (lo transforma a un objeto desde string)
         productComment.push(JSON.parse(sessionStorage.getItem("comentario")));
       }
       showProductComment();
     }
   });
 });
+//Obtiene el json del link
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(PRODUCTS_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
@@ -35,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 function showProductInfo() {
   let htmlContentToAppend = "";
-
+  //Se usa la concadenacion de texto para añadir las variables del js con codigo html a mostrar
   htmlContentToAppend +=
     `
     <div class="container">
@@ -119,16 +124,19 @@ function showProductInfo() {
 </div>
 </div>
   `;
+  //se asigna y se muestra en el codigo html
 
   document.getElementById("prodInner").innerHTML = htmlContentToAppend;
 }
 function showRelated() {
   let relatedInfo = "";
-
+  //El for pasa por el largo de los productos relacionados
   for (let i = 0; i < productInfo.relatedProducts.length; i++) {
+    //Se guarda en pos la posicion de los productos relacionados guardados en productInfo
     let pos = productInfo.relatedProducts[i];
+    //Se le asigna la informacion de ese producto a la variable related
     let related = relatedProduct[pos];
-
+    //Se escribe el codigo html con concadenacion de texto
     relatedInfo +=
       `
   <div class=" col-sm-4 ">
@@ -168,14 +176,18 @@ function showRelated() {
   }
   document.getElementById("ads").innerHTML = relatedInfo;
 }
+//
 function showProductComment() {
   let comments = "";
+  //recorre por cada elemento en el arreglo
   productComment.forEach(function (ob) {
     for (var i = 0; i < 5; i++) {
-      // We need 5 stars
-      var icoClass = i < ob.score ? "fa fa-star icon-a" : "fa fa-star-o icon-b"; // full or empty star?
-      comments += "<i class='" + icoClass + "'></i>"; // concatenate stars
+      //Se repite 5 veces porque son 5 estrellas
+      //Se usa el operador ternario  atajo al if
+      var icoClass = i < ob.score ? "fa fa-star icon-a" : "fa fa-star-o icon-b"; //Si score es menor a i se muestra estrella vacia sino lo contrario
+      comments += "<i class='" + icoClass + "'></i>"; // Concadenacion de estrellas
     }
+    //cada comentario es añadido a el codigo
     comments +=
       `
       <li class="list-group-item ">
@@ -201,16 +213,18 @@ function showProductComment() {
         </div>
       </div>
     </div>
-  </li><br>`; // and concatenate the cool movie name
+  </li><br>`;
   });
+  //Asignando luego del for agrega a el tag prodComment el codigo html
   document.getElementById("prodComment").innerHTML = comments;
-  // Finally insert
 }
 
 var count;
 
 function starmark(item) {
+  //Funcion que trabaja con el codigo html mientras se mueve el mouse en las estrellas
   count = item.id[0];
+  //Se guardan las estrellas en la session storage
   sessionStorage.starRating = count;
   var subid = item.id.substring(1);
   for (var i = 0; i < 5; i++) {
