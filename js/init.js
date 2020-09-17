@@ -60,7 +60,7 @@ if (email.value) {
     email.innerHTML = email.innerHTML.slice(0, email.innerHTML.indexOf("@"));
   }
   email.classList.remove("btn-dark");
-  document.getElementById("cart").remove();
+
   document.getElementById("btnlogout").innerHTML += `
   <a class="dropdown-item " href="../my-profile.html">Mi perfil</a>
   <a class="dropdown-item " href="../cart.html">Mi carrito</a>
@@ -80,6 +80,6 @@ document.getElementById("logout").addEventListener("click", logout);
 
 function logout() {
   localStorage.removeItem("user");
-  localStorage.removeItem("photo");
+
   location.reload();
 }
