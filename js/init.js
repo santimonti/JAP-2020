@@ -63,8 +63,8 @@ if (email.value) {
   email.classList.remove("btn-dark");
 
   document.getElementById("btnlogout").innerHTML += `
-  <a class="dropdown-item " href="my-profile.html">Mi perfil</a>
-  <a class="dropdown-item " href="cart.html">Mi carrito</a>
+  <a class="dropdown-item " href="/my-profile.html">Mi perfil</a>
+  <a class="dropdown-item " href="/cart.html">Mi carrito</a>
   
   <a class="dropdown-item " id="logout" href="#">Cerrar sesion</a>
   
