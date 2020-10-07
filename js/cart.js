@@ -24,7 +24,7 @@ function showCartInfo() {
                   <div class="row">
                     <div class="col-sm-2 "><img src="` +
       element.src +
-      `" alt="Pino tree" class="img-responsive" /></div>
+      `" alt="Pino tree" class="img-responsive"  height="200px" width="200px"/></div>
                     <div class="col-sm-8 offset-sm-2">
                       <h4 class="nomargins">` +
       element.name +
