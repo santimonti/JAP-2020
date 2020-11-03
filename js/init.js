@@ -12,11 +12,9 @@ var foto;
 var showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 };
-
 var hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 };
-
 var getJSONData = function (url) {
   var result = {};
   showSpinner();
@@ -41,34 +39,24 @@ var getJSONData = function (url) {
       return result;
     });
 };
-
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {});
 email = document.getElementById("userEmail");
-
 document.getElementById("userEmail").addEventListener("click", usuario);
-
 email.value = localStorage.getItem("user");
-
-if (email.value == undefined) {
-  location.href = "login.html";
-}
+email.value == undefined && (location.href = "login.html");
 if (email.value) {
   email.innerHTML = email.value;
   if (email.innerHTML.indexOf("@") != -1) {
     email.innerHTML = email.innerHTML.slice(0, email.innerHTML.indexOf("@"));
   }
   email.classList.remove("btn-dark");
-
   document.getElementById("btnlogout").innerHTML += `
   <a class="dropdown-item " href="/my-profile.html">Mi perfil</a>
   <a class="dropdown-item " href="/cart.html">Mi carrito</a>
-  
-  <a class="dropdown-item " id="logout" href="#">Cerrar sesion</a>
-  
-  `;
+  <a class="dropdown-item " id="logout" href="#">Cerrar sesion</a>`;
 } else {
   email.innerhtml = "Iniciar sesion";
 }
@@ -78,9 +66,7 @@ function usuario() {
   }
 }
 document.getElementById("logout").addEventListener("click", logout);
-
 function logout() {
   localStorage.removeItem("user");
-
   location.reload();
 }

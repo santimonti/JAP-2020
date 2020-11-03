@@ -1,116 +1,282 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <title>eMercado - Todo lo que busques está aquí</title>
-    <link rel="stylesheet" href="css/cart.css">
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
 
-    <style>
-      
-      
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
+    }
+  </style>
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/dropzone.css" rel="stylesheet" />
+</head>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      
-    </style>
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/dropzone.css" rel="stylesheet" />
-  </head>
-
-  <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block btn btn-dark" href="index.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block btn btn-dark" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block btn btn-dark" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block btn btn-dark" href="sell.html">Vender</a>
-
-        <div class="dropdown">
-          <a
-            class="btn btn-secondary dropdown-toggle"
-            href="#"
-            role="button"
-            id="userEmail"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          ></a>
-
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <div id="btnlogout"></div>
-          </div>
+<body>
+  <nav class="site-header sticky-top py-1 bg-dark">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+      <a class="py-2 d-none d-md-inline-block btn btn-dark" href="index.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block btn btn-dark" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block btn btn-dark" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block btn btn-dark" href="sell.html">Vender</a>
+      <div class="dropdown">
+        <a
+           class="btn btn-secondary dropdown-toggle"
+           href="#"
+           role="button"
+           id="userEmail"
+           data-toggle="dropdown"
+           aria-haspopup="true"
+           aria-expanded="false"></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <div id="btnlogout"></div>
         </div>
       </div>
-    </nav>
-    
-      <div class="container">
-        <table id="cart" class="table table-hover table-condensed">
-          <thead>
-            <tr>
-              <th style="width: 80%">Product</th>
-              <th style="width: 10%">Price</th>
-              <th style="width: 8%">Quantity</th>
-              <th style="width: 22%" class="text-center">Subtotal</th>
-              <th style="width: 10%"></th>
-            </tr>
-          </thead>
-          <tbody id="Products">
-            
-          </tbody>
-          <tfoot>
-            <tr class="visible-xs">
-              <td class="text-center"><strong>o</strong></td>
-            </tr>
-            <tr>
-              <td>
-                <a href="#" class="btn btn-warning">
-                  <i class="fa fa-angle-left"></i>
-                  Continue Shopping
-                </a>
-              </td>
-              <td colspan="2" class="hidden-xs"></td>
-              <td class="hidden-xs text-center"><strong>o</strong></td>
-              <td>
-                <a href="#" class="btn btn-success btn-block">
-                  Checkout
-                  <i class="fa fa-angle-right"></i>
-                </a>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
     </div>
-    <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+  </nav>
+  <div class="container">
+    <table id="cart" class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th style="width: 80%" class="text-center">Productos</th>
+          <th style="width: 5%" class="text-center">Precio</th>
+          <th style="width: 8%">Cantidad</th>
+          <th style="width: 22%" class="text-center">Subtotal </th>
+
+        </tr>
+      </thead>
+      <tbody id="Products">
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <h2 class="text-center">Tipo de envio</h2>
+
+
+          </td>
+
+        </tr>
+        <td>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="envio" id="envio" value="option1"
+                   checked onchange="priceSend(this)">
+            <label class="form-check-label" for="envio">
+              <strong>MegaFast 1-2</strong> días habiles (15%)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="envio" id="envio2" value="option2"
+                   onchange="priceSend(this)">
+            <label class="form-check-label" for="envio2">
+              <strong>Fast 5-10</strong> días habiles (5%)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="envio" id="envio3" value="option3"
+                   onchange="priceSend(this)">
+            <label class="form-check-label" for="envio33">
+              <strong>Retiro en local</strong>
+            </label>
+          </div>
+
+        </td>
+        <tr>
+          <td colspan="4" class="text-right">
+            Costo de envio: <strong id="costSend"></strong>
+          </td>
+        </tr>
+        <tr>
+
+          <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pago"> Modo de pago</button>
+            <div class="modal fade" id="pago" tabindex="-1" aria-labelledby="pagoLabel"
+                 aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="pagoLabel">Seleccionar metodo de pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                    <body class="bg-light">
+
+                      <div class="container">
+
+
+                        <div class="row">
+
+                          <div class="col-md-8 order-md-1">
+
+                            <form class="needs-validation was-validated" novalidate="">
+
+
+                              <h4 class="mb-3">Pago</h4>
+
+                              <div class="d-block my-3">
+                                <div class="custom-control custom-radio">
+                                  <input id="credit" name="paymentMethod" type="radio" class="custom-control-input"
+                                         checked="" required="">
+                                  <label class="custom-control-label" for="credit">Tarjeta de credito</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                  <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"
+                                         required="">
+                                  <label class="custom-control-label" for="debit">Tarjeta de debito</label>
+                                </div>
+
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6 ">
+                                  <label for="cc-name">Nombre del titular</label>
+                                  <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+
+                                  <div class="invalid-feedback">
+                                    Nombre del titular es necesario
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="cc-number">Numero de tarjeta</label>
+                                  <input type="text" class="form-control" id="cc-number" placeholder=""
+                                         required="">
+
+                                  <div class="invalid-feedback">
+                                    Numero de tarjeta es requerido
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-5 ">
+                                  <label for="cc-expiration">Fecha de vencimiento</label>
+                                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                                  <div class="invalid-feedback">
+                                    Fecha de vencimiento es requerido
+                                  </div>
+                                </div>
+                                <div class="col-sm-4">
+                                  <label for="cc-expiration">
+                                    <br>CVV
+                                  </label>
+                                  <input type="text" class="form-control " id="cc-cvv" placeholder="" required="">
+                                  <div class="invalid-feedback">
+                                    Codigo de segurad es requerido
+                                  </div>
+                                </div>
+                              </div>
+                              <hr class="col-md-12">
+                              <div class="row">
+                                <div class="col-md-12 ">
+                                  <div class="custom-control custom-radio">
+                                    <input id="bank" name="paymentMethod" type="radio" class="custom-control-input"
+                                           required="">
+                                    <label class="custom-control-label" for="bank">Transferencia bancaria</label>
+                                  </div>
+
+                                  <input type="text" class="form-control" id="bank-number" placeholder="" required="">
+                                  <small class="text-muted">Numero de cuenta</small>
+                                  <div class="invalid-feedback">
+                                    Numero de cuenta requerido
+                                  </div>
+                                </div>
+
+
+                            </form>
+                          </div>
+                        </div>
+
+
+                      </div>
+
+
+                    </body>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </td>
+
+
+          <td colspan="3" class="col text-right"> Total en pesos: <strong id="pTotal"> </strong> $U
+          </td>
+
+        </tr>
+
+
+        <tr>
+          <td colspan="4">
+            <a href=" #" class="btn btn-success btn-block  "> Checkout <i class="fa fa-angle-right "
+                 aria-hidden=" true"></i>
+            </a>
+          </td>
+        </tr>
+
+      </tfoot>
+    </table>
+  </div>
+  </div>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/dropzone.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/cart.js"></script>
-  </body>
+  </div>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict';
+
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dropzone.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="https://use.fontawesome.com/f3f48771e1.js"></script>
+</body>
+
 </html>
