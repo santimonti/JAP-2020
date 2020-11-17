@@ -60,12 +60,14 @@ if (email.value) {
 } else {
   email.innerhtml = "Iniciar sesion";
 }
+
 function usuario() {
   if (email.innerHTML == "Iniciar sesion") {
     document.getElementById("userEmail").href = "login.html";
   }
 }
 document.getElementById("logout").addEventListener("click", logout);
+
 function logout() {
   localStorage.removeItem("user");
   location.reload();
